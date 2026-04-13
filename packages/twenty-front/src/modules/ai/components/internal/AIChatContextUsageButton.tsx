@@ -10,10 +10,13 @@ import { themeCssVariables } from 'twenty-ui/theme-constants';
 import { ContextUsageProgressRing } from '@/ai/components/internal/ContextUsageProgressRing';
 import { agentChatHasMessageComponentSelector } from '@/ai/states/agentChatHasMessageComponentSelector';
 import {
-  agentChatUsageState,
+  agentChatUsageComponentFamilyState,
   type AgentChatLastMessageUsage,
-} from '@/ai/states/agentChatUsageState';
+} from '@/ai/states/agentChatUsageComponentFamilyState';
+import { currentAIChatThreadState } from '@/ai/states/currentAIChatThreadState';
 import { SettingsBillingLabelValueItem } from '@/settings/billing/components/internal/SettingsBillingLabelValueItem';
+import { billingState } from '@/client-config/states/billingState';
+import { useAtomComponentFamilyStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomComponentFamilyStateValue';
 import { useAtomComponentSelectorValue } from '@/ui/utilities/state/jotai/hooks/useAtomComponentSelectorValue';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
 import { formatNumber } from '~/utils/format/formatNumber';
@@ -78,17 +81,6 @@ const StyledSectionTitle = styled.span`
   padding-bottom: ${themeCssVariables.spacing[2]};
 `;
 
-const formatCredits = (credits: number): string => {
-  if (Number.isInteger(credits)) {
-    return credits.toLocaleString();
-  }
-
-  return credits.toLocaleString(undefined, {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 1,
-  });
-};
-
 const getCachedLabel = (lastMessage: AgentChatLastMessageUsage): string => {
   if (lastMessage.cachedInputTokens <= 0 || lastMessage.inputTokens <= 0) {
     return '';
@@ -104,7 +96,24 @@ const getCachedLabel = (lastMessage: AgentChatLastMessageUsage): string => {
 export const AIChatContextUsageButton = () => {
   const { t } = useLingui();
   const [isHovered, setIsHovered] = useState(false);
-  const agentChatUsage = useAtomStateValue(agentChatUsageState);
+  const currentAIChatThread = useAtomStateValue(currentAIChatThreadState);
+  const agentChatUsage = useAtomComponentFamilyStateValue(
+    agentChatUsageComponentFamilyState,
+    { threadId: currentAIChatThread },
+  );
+  const billing = useAtomStateValue(billingState);
+  const isBillingEnabled = billing?.isBillingEnabled ?? false;
+
+  // Values from the streaming API arrive as display credits (micro-credits / 1000).
+  // 1000 display credits = $1. Convert accordingly.
+  const formatChatCost = (displayCredits: number): string => {
+    if (isBillingEnabled) {
+      return `${formatNumber(displayCredits, { decimals: 1 })} credits`;
+    }
+    const dollars = displayCredits / 1000;
+
+    return `$${formatNumber(dollars, { decimals: 2 })}`;
+  };
 
   const hasMessages = useAtomComponentSelectorValue(
     agentChatHasMessageComponentSelector,
@@ -202,7 +211,9 @@ export const AIChatContextUsageButton = () => {
                 />
                 <SettingsBillingLabelValueItem
                   label={t`Cost`}
-                  value={`${formatCredits(lastMessage.inputCredits + lastMessage.outputCredits)} ${t`credits`}`}
+                  value={formatChatCost(
+                    lastMessage.inputCredits + lastMessage.outputCredits,
+                  )}
                 />
               </StyledSection>
             </>
@@ -230,7 +241,7 @@ export const AIChatContextUsageButton = () => {
             />
             <SettingsBillingLabelValueItem
               label={t`Total cost`}
-              value={`${formatCredits(totalCredits)} ${t`credits`}`}
+              value={formatChatCost(totalCredits)}
             />
           </StyledSection>
         </StyledHoverCard>

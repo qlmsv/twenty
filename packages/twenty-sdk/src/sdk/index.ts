@@ -1,10 +1,23 @@
 export {
   AggregateOperations,
+  DateDisplayFormat,
+  FieldMetadataSettingsOnClickAction,
+  HTTPMethod,
   NavigationMenuItemType,
+  NumberDataType,
   ObjectRecordGroupByDateGranularity,
   PageLayoutTabLayoutMode,
+  ViewFilterGroupLogicalOperator,
+  ViewFilterOperand,
+  ViewOpenRecordIn,
+  ViewType,
+  ViewVisibility,
 } from 'twenty-shared/types';
-export type { PageLayoutWidgetUniversalConfiguration } from 'twenty-shared/types';
+export type {
+  GridPosition,
+  PageLayoutWidgetConditionalDisplay,
+  PageLayoutWidgetUniversalConfiguration,
+} from 'twenty-shared/types';
 export type { ApplicationConfig } from './application/application-config';
 export { defineApplication } from './application/define-application';
 export type {
@@ -35,17 +48,19 @@ export type {
   FrontComponentConfig,
   FrontComponentType,
 } from './front-component-config';
+export { getPublicAssetUrl } from './get-public-asset-url';
 export { defineLogicFunction } from './logic-functions/define-logic-function';
 export { definePostInstallLogicFunction } from './logic-functions/define-post-install-logic-function';
 export { definePreInstallLogicFunction } from './logic-functions/define-pre-install-logic-function';
 export type {
-  InstallLogicFunctionHandler,
-  InstallLogicFunctionPayload,
-} from './logic-functions/install-logic-function-payload-type';
+  InstallHandler,
+  InstallPayload,
+} from '@/sdk/logic-functions/install-payload-type';
 export type {
   LogicFunctionConfig,
   LogicFunctionHandler,
 } from './logic-functions/logic-function-config';
+export type { InputJsonSchema } from 'twenty-shared/logic-function';
 export type { CronPayload } from './logic-functions/triggers/cron-payload-type';
 export type {
   DatabaseEventPayload,
@@ -135,9 +150,18 @@ export {
   useUserId,
 } from './front-component-api';
 export type {
+  CloseSidePanelFunction,
   CommandConfirmationModalAccent,
   CommandConfirmationModalResult,
+  EnqueueSnackbarFunction,
   FrontComponentExecutionContext,
+  NavigateFunction,
+  OpenCommandConfirmationModalFunction,
+  OpenCommandConfirmationModalHostFunction,
+  OpenSidePanelPageFunction,
+  RequestAccessTokenRefreshFunction,
+  UnmountFrontComponentFunction,
+  UpdateProgressFunction,
 } from './front-component-api';
 
 export { AppPath, SidePanelPages } from 'twenty-shared/types';
@@ -145,17 +169,3 @@ export type {
   EnqueueSnackbarParams,
   SnackBarVariant,
 } from 'twenty-shared/types';
-
-// Front Component Common exports
-export {
-  ALLOWED_HTML_ELEMENTS,
-  COMMON_HTML_EVENTS,
-  EVENT_TO_REACT,
-  HTML_COMMON_PROPERTIES,
-  HTML_TAG_TO_REMOTE_COMPONENT,
-} from './front-component-api';
-export type { AllowedHtmlElement } from './front-component-api';
-
-// Style bridge utilities for CSS-in-JS libraries in remote components
-export { installStyleBridge } from '../front-component-renderer/polyfills/installStyleBridge';
-export { exposeGlobals } from '../front-component-renderer/remote/utils/exposeGlobals';

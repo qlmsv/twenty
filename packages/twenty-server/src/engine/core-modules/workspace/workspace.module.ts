@@ -25,6 +25,9 @@ import { UserWorkspaceModule } from 'src/engine/core-modules/user-workspace/user
 import { UserEntity } from 'src/engine/core-modules/user/user.entity';
 import { CheckCustomDomainValidRecordsCronCommand } from 'src/engine/core-modules/workspace/crons/commands/check-custom-domain-valid-records.cron.command';
 import { CheckCustomDomainValidRecordsCronJob } from 'src/engine/core-modules/workspace/crons/jobs/check-custom-domain-valid-records.cron.job';
+import { UpgradeModule } from 'src/engine/core-modules/upgrade/upgrade.module';
+import { CoreEntityCacheModule } from 'src/engine/core-entity-cache/core-entity-cache.module';
+import { WorkspaceEntityCacheProviderService } from 'src/engine/core-modules/workspace/services/workspace-entity-cache-provider.service';
 import { WorkspaceService } from 'src/engine/core-modules/workspace/services/workspace.service';
 import { WorkspaceGaugeService } from 'src/engine/core-modules/workspace/workspace-gauge.service';
 import { workspaceAutoResolverOpts } from 'src/engine/core-modules/workspace/workspace.auto-resolver-opts';
@@ -32,7 +35,6 @@ import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.ent
 import { WorkspaceResolver } from 'src/engine/core-modules/workspace/workspace.resolver';
 import { BillingDisabledGuard } from 'src/engine/guards/billing-disabled.guard';
 import { AiAgentModule } from 'src/engine/metadata-modules/ai/ai-agent/ai-agent.module';
-import { DataSourceModule } from 'src/engine/metadata-modules/data-source/data-source.module';
 import { WorkspaceManyOrAllFlatEntityMapsCacheModule } from 'src/engine/metadata-modules/flat-entity/services/workspace-many-or-all-flat-entity-maps-cache.module';
 import { ObjectMetadataModule } from 'src/engine/metadata-modules/object-metadata/object-metadata.module';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
@@ -65,7 +67,6 @@ import { StandardObjectsPrefillModule } from 'src/engine/workspace-manager/stand
         UserWorkspaceModule,
         WorkspaceManagerModule,
         FeatureFlagModule,
-        DataSourceModule,
         OnboardingModule,
         WorkspaceDataSourceModule,
         TypeORMModule,
@@ -82,6 +83,8 @@ import { StandardObjectsPrefillModule } from 'src/engine/workspace-manager/stand
         ApplicationModule,
         EnterpriseModule,
         StandardObjectsPrefillModule,
+        CoreEntityCacheModule,
+        UpgradeModule,
       ],
       services: [WorkspaceService],
       resolvers: workspaceAutoResolverOpts,
@@ -92,6 +95,7 @@ import { StandardObjectsPrefillModule } from 'src/engine/workspace-manager/stand
     WorkspaceResolver,
     WorkspaceService,
     WorkspaceGaugeService,
+    WorkspaceEntityCacheProviderService,
     BillingDisabledGuard,
     CheckCustomDomainValidRecordsCronCommand,
     CheckCustomDomainValidRecordsCronJob,

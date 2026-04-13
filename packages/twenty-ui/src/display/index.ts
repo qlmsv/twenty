@@ -15,7 +15,7 @@ export { invalidAvatarUrlsAtomV2 } from './avatar/components/states/invalidAvata
 export { AVATAR_PROPERTIES_BY_SIZE } from './avatar/constants/AvatarPropertiesBySize';
 export type { AvatarSize } from './avatar/types/AvatarSize';
 export type { AvatarType } from './avatar/types/AvatarType';
-export type { BannerVariant } from './banner/components/Banner';
+export type { BannerColor, BannerVariant } from './banner/components/Banner';
 export { Banner } from './banner/components/Banner';
 export type { SidePanelInformationBannerProps } from './banner/components/SidePanelInformationBanner';
 export { SidePanelInformationBanner } from './banner/components/SidePanelInformationBanner';
@@ -86,8 +86,9 @@ export {
   IconAlignLeft,
   IconAlignRight,
   IconApi,
-  IconAppWindow,
   IconApps,
+  IconAppWindow,
+  IconWindow,
   IconArchive,
   IconArchiveOff,
   IconArrowBackUp,
@@ -95,12 +96,12 @@ export {
   IconArrowLeft,
   IconArrowMerge,
   IconArrowRight,
-  IconArrowUp,
-  IconArrowUpRight,
   IconArrowsDiagonal,
   IconArrowsSort,
   IconArrowsSplit2,
   IconArrowsVertical,
+  IconArrowUp,
+  IconArrowUpRight,
   IconAt,
   IconAxisX,
   IconAxisY,
@@ -110,6 +111,7 @@ export {
   IconBlockquote,
   IconBold,
   IconBolt,
+  IconBook,
   IconBook2,
   IconBookmark,
   IconBookmarkPlus,
@@ -124,6 +126,7 @@ export {
   IconBrandGoogle,
   IconBrandGraphql,
   IconBrandLinkedin,
+  IconBrandNpm,
   IconBrandOpenai,
   IconBrandX,
   IconBriefcase,
@@ -153,8 +156,8 @@ export {
   IconChevronLeft,
   IconChevronRight,
   IconChevronRightPipe,
-  IconChevronUp,
   IconChevronsRight,
+  IconChevronUp,
   IconCircle,
   IconCircleDashed,
   IconCircleDot,
@@ -246,6 +249,7 @@ export {
   IconEye,
   IconEyeOff,
   IconEyeShare,
+  IconEyeX,
   IconFile,
   IconFileCheck,
   IconFileExport,
@@ -259,8 +263,8 @@ export {
   IconFilterCog,
   IconFilterOff,
   IconFilterPlus,
-  IconFilterX,
   IconFilters,
+  IconFilterX,
   IconFlag,
   IconFlask,
   IconFocusCentered,
@@ -276,6 +280,7 @@ export {
   IconGitBranchDeleted,
   IconGitCommit,
   IconGizmo,
+  IconGraph,
   IconGripVertical,
   IconH1,
   IconH2,
@@ -320,6 +325,7 @@ export {
   IconLayoutSidebarRight,
   IconLayoutSidebarRightCollapse,
   IconLayoutSidebarRightExpand,
+  IconLego,
   IconLetterK,
   IconLibraryPlus,
   IconLifebuoy,
@@ -384,6 +390,7 @@ export {
   IconPresentation,
   IconPrinter,
   IconProgressCheck,
+  IconPrompt,
   IconPuzzle,
   IconPuzzle2,
   IconQuestionMark,
@@ -419,10 +426,10 @@ export {
   IconShield,
   IconSitemap,
   IconSlash,
-  IconSortAZ,
   IconSortAscending,
   IconSortAscendingLetters,
   IconSortAscendingNumbers,
+  IconSortAZ,
   IconSortDescending,
   IconSortDescendingLetters,
   IconSortDescendingNumbers,
@@ -447,6 +454,7 @@ export {
   IconSquareRoundedX,
   IconSquareX,
   IconStack2,
+  IconStar,
   IconStatusChange,
   IconStepInto,
   IconStrikethrough,
@@ -507,6 +515,11 @@ export { Info } from './info/components/Info';
 export { Status } from './status/components/Status';
 export { HorizontalSeparator } from './text/components/HorizontalSeparator';
 export { SeparatorLineText } from './text/components/SeparatorLineText';
+export { StyledTintedIconTileContainer } from './tinted-icon-tile/components/StyledTintedIconTileContainer';
+export type { TintedIconTileProps } from './tinted-icon-tile/components/TintedIconTile';
+export { TintedIconTile } from './tinted-icon-tile/components/TintedIconTile';
+export type { IconTileColorShades } from './tinted-icon-tile/utils/getIconTileColorShades';
+export { getIconTileColorShades } from './tinted-icon-tile/utils/getIconTileColorShades';
 export type { AppTooltipProps } from './tooltip/AppTooltip';
 export {
   TooltipPosition,

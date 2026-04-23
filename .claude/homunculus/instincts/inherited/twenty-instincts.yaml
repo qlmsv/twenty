@@ -1,0 +1,661 @@
+# Instincts generated from https://github.com/qlmsv/twenty
+# Generated: 2026-03-28T00:15:18.115Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: twenty-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Commit Length
+
+## Action
+
+Write moderate-length commit messages (~56 characters)
+
+## Evidence
+
+- Average commit message length: 56 chars
+- Based on 200 commits
+
+---
+id: twenty-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: twenty-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Export Style
+
+## Action
+
+Prefer mixed exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: mixed
+
+---
+id: twenty-arch-feature-based
+trigger: "when adding a new feature"
+confidence: 0.85
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Arch Feature Based
+
+## Action
+
+Create a new folder in src/features/ with all related code colocated
+
+## Evidence
+
+- Feature-based module organization detected
+- Structure: src/features/[feature-name]/
+
+---
+id: twenty-test-framework
+trigger: "when writing tests"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Test Framework
+
+## Action
+
+Use vitest as the test framework
+
+## Evidence
+
+- Test framework detected: vitest
+- File pattern: *.test.ts
+
+---
+id: twenty-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: twenty-test-mocking
+trigger: "when mocking dependencies in tests"
+confidence: 0.75
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Test Mocking
+
+## Action
+
+Use msw for mocking
+
+## Evidence
+
+- Mocking pattern detected: msw
+- Consistent across test files
+
+---
+id: twenty-test-types
+trigger: "when planning tests for a feature"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Test Types
+
+## Action
+
+Write unit, integration, e2e tests to match project standards
+
+## Evidence
+
+- Test types detected: unit, integration, e2e
+- Coverage config: yes
+
+---
+id: twenty-workflow-database-migration
+trigger: "when modifying the database schema or adding tables"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow Database Migration
+
+## Action
+
+Follow the database-migration workflow:
+1. Create migration file
+2. Update schema definitions
+3. Generate/update types
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: migrations/*, **/schema.*, **/types.ts
+
+---
+id: twenty-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.75
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~5x per month
+- Files: packages/create-twenty-app/src/*, packages/create-twenty-app/src/utils/*, packages/twenty-sdk/src/cli/commands/*
+
+---
+id: twenty-workflow-refactoring
+trigger: "when refactoring code"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow Refactoring
+
+## Action
+
+Follow the refactoring workflow:
+1. Ensure tests pass before refactor
+2. Refactor code structure
+3. Verify tests still pass
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: src/**/*
+
+---
+id: twenty-workflow-i18n-translation-sync
+trigger: "when doing i18n translation sync"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow I18n Translation Sync
+
+## Action
+
+Follow the i18n-translation-sync workflow:
+1. Update .po files for each locale in frontend and/or backend
+2. Regenerate corresponding .ts files in 'generated' directories
+3. Commit all updated and generated translation files
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~10x per month
+- Files: packages/twenty-front/src/locales/*.po, packages/twenty-front/src/locales/generated/*.ts, packages/twenty-server/src/engine/core-modules/i18n/locales/*.po
+
+---
+id: twenty-workflow-graphql-schema-and-types-regeneration
+trigger: "when doing graphql schema and types regeneration"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow Graphql Schema And Types Regeneration
+
+## Action
+
+Follow the graphql-schema-and-types-regeneration workflow:
+1. Update backend GraphQL schema
+2. Regenerate schema.graphql, schema.ts, and types.ts in client SDK
+3. Regenerate frontend generated-metadata/graphql.ts
+4. Update or add related frontend/backend files as needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: packages/twenty-client-sdk/src/metadata/generated/schema.graphql, packages/twenty-client-sdk/src/metadata/generated/schema.ts, packages/twenty-client-sdk/src/metadata/generated/types.ts
+
+---
+id: twenty-workflow-add-or-update-database-migration
+trigger: "when doing add or update database migration"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow Add Or Update Database Migration
+
+## Action
+
+Follow the add-or-update-database-migration workflow:
+1. Create or update migration file(s) in typeorm/core/migrations
+2. Update migration utility files if needed
+3. Update or add related command files for running or managing migrations
+4. Update schema or entity files as needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: packages/twenty-server/src/database/typeorm/core/migrations/**/*.ts, packages/twenty-server/src/database/typeorm/core/migrations/utils/**/*.ts, packages/twenty-server/src/database/commands/upgrade-version-command/**/*.ts
+
+---
+id: twenty-workflow-feature-development-with-tests-and-docs
+trigger: "when doing feature development with tests and docs"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow Feature Development With Tests And Docs
+
+## Action
+
+Follow the feature-development-with-tests-and-docs workflow:
+1. Edit or add implementation files (e.g., service, resolver, or UI component)
+2. Edit or add related test files (unit, integration, or snapshot tests)
+3. Edit or add related constants or utility files
+4. Update documentation or type definitions if needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~8x per month
+- Files: packages/twenty-server/src/engine/**/*.ts, packages/twenty-server/test/**/*.ts, packages/twenty-front/src/modules/**/*.ts*
+
+---
+id: twenty-workflow-ci-workflow-update
+trigger: "when doing ci workflow update"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/qlmsv/twenty
+---
+
+# Twenty Workflow Ci Workflow Update
+
+## Action
+
+Follow the ci-workflow-update workflow:
+1. Edit one or more .github/workflows/*.yaml files
+2. Update related scripts or Dockerfiles if needed
+3. Commit changes to CI configuration
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: .github/workflows/*.yaml, packages/twenty-docker/**/*.sh, packages/twenty-docker/**/*.Dockerfile
+
+---
+id: twenty-camelcase-files
+trigger: "When creating or renaming a file."
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Camelcase Files
+
+## Action
+
+Use camelCase for file names.
+
+## Evidence
+
+- Pattern: namingConventions.files = camelCase
+- Seen in packages/twenty-client-sdk/vite.config.ts
+
+---
+id: twenty-camelcase-functions
+trigger: "When defining a function."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Camelcase Functions
+
+## Action
+
+Use camelCase for function names.
+
+## Evidence
+
+- Pattern: namingConventions.functions = camelCase
+- Seen in packages/twenty-server/src/engine/core-modules/application/application-package/constants/seed-dependencies/package.json
+
+---
+id: twenty-pascalcase-classes
+trigger: "When defining a class."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Pascalcase Classes
+
+## Action
+
+Use PascalCase for class names.
+
+## Evidence
+
+- Pattern: namingConventions.classes = PascalCase
+- Seen in packages/twenty-server/src/engine/metadata-modules/message-channel/data-access/message-channel-data-access.module.ts
+
+---
+id: twenty-screaming-snake-constants
+trigger: "When defining a constant."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Screaming Snake Constants
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names.
+
+## Evidence
+
+- Pattern: namingConventions.constants = SCREAMING_SNAKE_CASE
+- Seen in packages/twenty-server/src/engine/core-modules/application/application-package/constants/seed-dependencies/package.json
+
+---
+id: twenty-mixed-import-export
+trigger: "When importing or exporting modules."
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Mixed Import Export
+
+## Action
+
+Use either named or default imports/exports as appropriate for the module.
+
+## Evidence
+
+- Pattern: importStyle = mixed, exportStyle = mixed
+- Seen in packages/twenty-client-sdk/vite.config.ts
+
+---
+id: twenty-vitest-pattern
+trigger: "When writing tests."
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Vitest Pattern
+
+## Action
+
+Use Vitest as the testing framework and name test files with *.test.ts.
+
+## Evidence
+
+- Pattern: framework = vitest, filePattern = *.test.ts
+- Seen in packages/twenty-front/src/modules/**/*.test.ts*
+
+---
+id: twenty-msw-mocking
+trigger: "When mocking APIs in tests."
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Msw Mocking
+
+## Action
+
+Use MSW (Mock Service Worker) for mocking.
+
+## Evidence
+
+- Pattern: mockingStyle = msw
+- Seen in packages/twenty-front/src/modules/**/*.test.ts*
+
+---
+id: twenty-coverage-config
+trigger: "When configuring tests."
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Coverage Config
+
+## Action
+
+Enable code coverage in Vitest configuration.
+
+## Evidence
+
+- Pattern: coverageConfig = true
+- Seen in packages/twenty-front/vitest.config.ts
+
+---
+id: twenty-commit-prefix
+trigger: "When writing a commit message."
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Commit Prefix
+
+## Action
+
+Prefix commit messages with fix:, feat:, or chore: as appropriate.
+
+## Evidence
+
+- Pattern: commit prefixes = fix, feat, chore
+- Seen in commit 'fix: invalidate rolesPermissions cache + add Docker Hub auth to CI (#19044)'
+
+---
+id: twenty-commit-length
+trigger: "When writing a commit message."
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Commit Length
+
+## Action
+
+Keep commit messages concise, around 56 characters on average.
+
+## Evidence
+
+- Pattern: averageLength = 56
+- Seen in commit 'feat: support authType on AI providers for IAM role authentication (#19016)'
+
+---
+id: twenty-i18n-translation-sync
+trigger: "When translations are updated or new locales are added."
+confidence: 0.99
+domain: workflow
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty I18n Translation Sync
+
+## Action
+
+Update .po files, regenerate .ts files in 'generated' directories, and commit all updated translation files.
+
+## Evidence
+
+- Workflow: i18n-translation-sync
+- Files: packages/twenty-front/src/locales/*.po, packages/twenty-server/src/engine/core-modules/i18n/locales/*.po
+
+---
+id: twenty-graphql-schema-types
+trigger: "When backend GraphQL schema changes."
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Graphql Schema Types
+
+## Action
+
+Regenerate schema.graphql, schema.ts, types.ts in client SDK and frontend generated-metadata/graphql.ts.
+
+## Evidence
+
+- Workflow: graphql-schema-and-types-regeneration
+- Files: packages/twenty-client-sdk/src/metadata/generated/schema.graphql
+
+---
+id: twenty-database-migration
+trigger: "When a new database table, column, or constraint is added or modified."
+confidence: 0.92
+domain: workflow
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Database Migration
+
+## Action
+
+Create or update migration files, update migration utilities and related commands, and update schema/entity files as needed.
+
+## Evidence
+
+- Workflow: add-or-update-database-migration
+- Files: packages/twenty-server/src/database/typeorm/core/migrations/**/*.ts
+
+---
+id: twenty-feature-dev-tests-docs
+trigger: "When developing a new feature or fixing a bug."
+confidence: 0.88
+domain: workflow
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Feature Dev Tests Docs
+
+## Action
+
+Edit or add implementation files, related test files, constants/utilities, and update documentation or types if needed.
+
+## Evidence
+
+- Workflow: feature-development-with-tests-and-docs
+- Files: packages/twenty-server/src/engine/**/*.ts, packages/twenty-front/src/modules/**/*.test.ts*
+
+---
+id: twenty-ci-workflow-update
+trigger: "When CI/CD pipeline needs to be fixed, improved, or updated for new requirements."
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: qlmsv/twenty
+---
+
+# Twenty Ci Workflow Update
+
+## Action
+
+Edit .github/workflows/*.yaml, update related scripts or Dockerfiles if needed, and commit changes.
+
+## Evidence
+
+- Workflow: ci-workflow-update
+- Files: .github/workflows/*.yaml, packages/twenty-docker/**/*.Dockerfile
+
